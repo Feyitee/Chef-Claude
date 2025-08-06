@@ -1,4 +1,10 @@
 const Main = () => {
+  const ingredients = ["Chicken", "Oregano", "Tomatoes"];
+
+  const ingredientListItems = ingredients.map((ingredient) => {
+    <li key={ingredient}>{ingredient}</li>;
+  });
+
   return (
     <main>
       <form>
@@ -10,6 +16,7 @@ const Main = () => {
         />
         <button>Add Ingredient</button>
       </form>
+      <ul>{ingredientListItems}</ul>
     </main>
   );
 };
