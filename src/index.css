@@ -7,28 +7,11 @@ body {
   font-family: Inter, sans-serif;
   background-color: #fafaf8;
 }
+
 form {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  margin: 12px 12px;
+  margin-top: 15px;
 }
 
-input {
-  width: 500px;
-  border-radius: 6px;
-}
-button {
-  width: 200px;
-  background-color: #141413;
-  color: white;
-  border-radius: 12px;
-}
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 header {
   display: flex;
   justify-content: center;
@@ -79,4 +62,16 @@ header > h1 {
 .add-ingredient-form > button::before {
   content: "+";
   margin-right: 5px;
+}
+
+.add-in > button {
+  font-family: Inter, sans-serif;
+  border-radius: 6px;
+  border: none;
+  color: black;
+  width: 150px;
+  height: 150px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-left: 350px;
 }

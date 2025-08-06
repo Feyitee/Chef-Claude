@@ -2,17 +2,25 @@ const Main = () => {
   const ingredients = ["Chicken", "Oregano", "Tomatoes"];
 
   const ingredientListItems = ingredients.map((ingredient) => {
-    <li key={ingredient}>{ingredient}</li>;
+    return <li key={ingredient}>{ingredient}</li>;
   });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const newIngredient = formData.get("ingredient");
+    ingredients.push(newIngredient);
+    console.log(ingredients);
+  }
 
   return (
     <main>
-      <form>
+      <form onSubmit={handleSubmit} className="add-ingredient-form">
         <input
           type="text"
           placeholder="e.g. oregano"
           aria-label="Add ingredient"
-          className="add-ingredient-form"
+          name="ingredient"
         />
         <button>Add Ingredient</button>
       </form>
