@@ -63,13 +63,11 @@ export default function App() {
 
 import Header from "./components/Header";
 import Main from "./components/Main";
-import She from "./components/She";
 const App = () => {
   return (
     <div>
       <Header />
       <Main />
-      <She />
     </div>
   );
 };
