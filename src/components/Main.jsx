@@ -1,15 +1,15 @@
 import React from "react";
 
-const Main = () => {
+export default function Main() {
   const [ingredients, setIngredients] = React.useState([]);
 
-  const ingredientListItems = ingredients.map((ingredient) => {
-    return <li key={ingredient}>{ingredient}</li>;
-  });
+  const ingredientsListItems = ingredients.map((ingredient) => (
+    <li key={ingredient}>{ingredient}</li>
+  ));
 
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient");
-    setIngredients((prevIngredient) => [...prevIngredient, newIngredient]);
+    setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
   }
 
   return (
@@ -21,11 +21,21 @@ const Main = () => {
           aria-label="Add ingredient"
           name="ingredient"
         />
-        <button>Add Ingredient</button>
+        <button>Add ingredient</button>
       </form>
-      <ul>{ingredientListItems}</ul>
+      <section>
+        <h2>Ingredients on hand:</h2>
+        <ul className="ingredients-list" aria-live="polite">
+          {ingredientsListItems}
+        </ul>
+        <div className="get-recipe-container">
+          <div>
+            <h3>Ready for a recipe?</h3>
+            <p>Generate a recipe from your list of ingredients.</p>
+          </div>
+          <button>Get a recipe</button>
+        </div>
+      </section>
     </main>
   );
-};
-
-export default Main;
+}
