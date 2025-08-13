@@ -15,12 +15,6 @@ export default function Main() {
     setRecipeShown((prevShown) => !prevShown);
   }
 
-  const ingredientsListItems = ingredients.map((ingredient) => (
-    <ingredientsList>
-      <li key={ingredient}>{ingredient}</li>{" "}
-    </ingredientsList>
-  ));
-
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient");
     setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
@@ -38,7 +32,12 @@ export default function Main() {
         <button>Add ingredient</button>
       </form>
 
-      {ingredients.length > 0 && <IngredientsList />}
+      {ingredients.length > 0 && (
+        <IngredientsList
+          toggleRecipeShown={toggleRecipeShown}
+          ingredients={ingredients}
+        />
+      )}
       {recipeShown && <ClaudeRecipe />}
     </main>
   );
