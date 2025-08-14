@@ -4,12 +4,7 @@ import ClaudeRecipe from "./ClaudeRecipe";
 import { getRecipeFromMistral } from "../../ai";
 
 const Main = () => {
-  const [ingredients, setIngredients] = React.useState([
-    "all the main spices",
-    "pasta",
-    "ground beef",
-    "tomato paste",
-  ]);
+  const [ingredients, setIngredients] = React.useState([]);
   const [recipe, setRecipe] = React.useState("");
 
   async function getRecipe() {
@@ -36,7 +31,7 @@ const Main = () => {
       {ingredients.length > 0 && (
         <IngredientsList ingredients={ingredients} getRecipe={getRecipe} />
       )}
-      {recipe && <ClaudeRecipe />}
+      {recipe && <ClaudeRecipe recipe={recipe} />}
     </main>
   );
 };
