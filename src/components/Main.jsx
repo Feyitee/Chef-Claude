@@ -10,11 +10,11 @@ const Main = () => {
     "ground beef",
     "tomato paste",
   ]);
-  const [recipeShown, setRecipeShown] = React.useState(false);
+  const [recipe, setRecipe] = React.useState("");
 
   async function getRecipe() {
     const recipeMarkdown = await getRecipeFromMistral(ingredients);
-    console.log(recipeMarkdown);
+    setRecipe(recipeMarkdown);
   }
 
   function addIngredient(formData) {
@@ -36,7 +36,7 @@ const Main = () => {
       {ingredients.length > 0 && (
         <IngredientsList ingredients={ingredients} getRecipe={getRecipe} />
       )}
-      {recipeShown && <ClaudeRecipe />}
+      {recipe && <ClaudeRecipe />}
     </main>
   );
 };
