@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 
 const ClaudeRecipe = (props) => {
   return (
-    <div className="suggested-recipe-container" aria-label="live">
+    <div className="suggested-recipe-container" aria-live="polite">
       <h2>Chef Claude Recommends:</h2>
       <ReactMarkdown>{props.recipe}</ReactMarkdown>
     </div>

@@ -7,6 +7,13 @@ const Main = () => {
   const [ingredients, setIngredients] = React.useState([]);
   const [recipe, setRecipe] = React.useState("");
 
+  const recipeSection = React.useRef(null);
+
+  React.useEffect(() => {
+    if (recipe !== "" && recipe.current !== null)
+      recipeSection.current.scrollIntoView();
+  }, [recipe]);
+
   async function getRecipe() {
     const recipeMarkdown = await getRecipeFromMistral(ingredients);
     setRecipe(recipeMarkdown);
@@ -16,6 +23,7 @@ const Main = () => {
     const newIngredient = formData.get("ingredient");
     setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
   }
+
   return (
     <main>
       <form action={addIngredient} className="add-ingredient-form">
@@ -29,7 +37,11 @@ const Main = () => {
       </form>
 
       {ingredients.length > 0 && (
-        <IngredientsList ingredients={ingredients} getRecipe={getRecipe} />
+        <IngredientsList
+          ingredients={ingredients}
+          getRecipe={getRecipe}
+          reciperef={recipeSection}
+        />
       )}
       {recipe && <ClaudeRecipe recipe={recipe} />}
     </main>
