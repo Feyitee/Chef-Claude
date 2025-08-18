@@ -11,7 +11,7 @@ const Main = () => {
 
   React.useEffect(() => {
     if (recipe !== "" && recipe.current !== null)
-      recipeSection.current.scrollIntoView();
+      recipeSection.current.scrollIntoView({ behavior: "smooth" });
   }, [recipe]);
 
   async function getRecipe() {
